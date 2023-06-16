@@ -86,10 +86,10 @@ div.HeroText div.Wrapper h1.SentenceContainer.OneRow[prev]:has(span.animate-out)
   transition: 1s cubic-bezier(0.83, 0, 0.17, 1);
 }
 div.HeroText div.Wrapper h1.SentenceContainer.OneRow.animate-in[prev] {
-  transform: translateY(-28px) perspective(500px) rotateX(60deg) scale(0.97);
+  transform: translateY(28px) perspective(500px) rotateX(-60deg) scale(0.97);
 }
 div.HeroText div.Wrapper h1.SentenceContainer.OneRow.animate-in[next] {
-  transform: translateY(28px) perspective(500px) rotateX(-60deg) scale(0.97);
+  transform: translateY(-28px) perspective(500px) rotateX(60deg) scale(0.97);
   transition: none;
 }
 div.HeroText div.Wrapper h1.SentenceContainer.OneRow.animate-in[active] {
@@ -98,7 +98,7 @@ div.HeroText div.Wrapper h1.SentenceContainer.OneRow.animate-in[active] {
   transition: 1s cubic-bezier(0.83, 0, 0.17, 1);
 }
 div.HeroText div.Wrapper h1.SentenceContainer.OneRow.animate-out[prev] {
-  transform: translateY(-28px) perspective(500px) rotateX(60deg) scale(0.97);
+  transform: translateY(28px) perspective(500px) rotateX(-60deg) scale(0.97);
   transition: 1s cubic-bezier(0.83, 0, 0.17, 1);
 }
 div.HeroText div.Wrapper h1.SentenceContainer.OneRow.animate-out[prev] span.Suffix.animate-in {
@@ -113,10 +113,10 @@ div.HeroText div.Wrapper h1.SentenceContainer.OneRow[active] span.Suffix {
   opacity: 1;
 }
 div.HeroText div.Wrapper h1.SentenceContainer.OneRow[prev] span.Suffix.animate-in {
-  transform: translateY(-28px) perspective(500px) rotateX(60deg) scale(0.97);
+  transform: translateY(28px) perspective(500px) rotateX(-60deg) scale(0.97);
 }
 div.HeroText div.Wrapper h1.SentenceContainer.OneRow[next] span.Suffix.animate-in {
-  transform: translateY(28px) perspective(500px) rotateX(-60deg) scale(0.97);
+  transform: translateY(-28px) perspective(500px) rotateX(60deg) scale(0.97);
   opacity: 0;
 }
 div.HeroText div.Wrapper h1.SentenceContainer.OneRow[active] span.Suffix.animate-in {
@@ -125,7 +125,7 @@ div.HeroText div.Wrapper h1.SentenceContainer.OneRow[active] span.Suffix.animate
   transition: 1s cubic-bezier(0.83, 0, 0.17, 1);
 }
 div.HeroText div.Wrapper h1.SentenceContainer.OneRow[prev] span.Suffix.animate-out {
-  transform: translateY(-28px) perspective(500px) rotateX(60deg) scale(0.97);
+  transform: translateY(28px) perspective(500px) rotateX(-60deg) scale(0.97);
   transition: 1s cubic-bezier(0.83, 0, 0.17, 1);
 }
 div.HeroText div.Wrapper h1.SentenceContainer.TwoRow {
@@ -137,11 +137,11 @@ div.HeroText div.Wrapper h1.SentenceContainer.TwoRow[active] {
   opacity: 1;
 }
 div.HeroText div.Wrapper h1.SentenceContainer.TwoRow.animate-in[prev] {
-  transform: translateY(-28px) perspective(500px) rotateX(60deg) scale(0.97);
+  transform: translateY(28px) perspective(500px) rotateX(-60deg) scale(0.97);
   transition-delay: 1s;
 }
 div.HeroText div.Wrapper h1.SentenceContainer.TwoRow.animate-in[next] {
-  transform: translateY(28px) perspective(500px) rotateX(-60deg) scale(0.97);
+  transform: translateY(-28px) perspective(500px) rotateX(60deg) scale(0.97);
   transition: none;
 }
 div.HeroText div.Wrapper h1.SentenceContainer.TwoRow.animate-in[active] {
@@ -150,16 +150,18 @@ div.HeroText div.Wrapper h1.SentenceContainer.TwoRow.animate-in[active] {
   transition: 1s cubic-bezier(0.83, 0, 0.17, 1);
 }
 div.HeroText div.Wrapper h1.SentenceContainer.TwoRow.animate-out[prev] {
-  transform: translateY(-28px) perspective(500px) rotateX(60deg) scale(0.97);
+  transform: translateY(28px) perspective(500px) rotateX(-60deg) scale(0.97);
   transition: 1s cubic-bezier(0.83, 0, 0.17, 1);
   transition-delay: 1s;
 }
 div.HeroText div.Wrapper h1.SentenceContainer.TwoRow span.Suffix.animate-delay {
   opacity: 0;
+  transform: translateX(-100%);
   transition: 1s cubic-bezier(0.83, 0, 0.17, 1);
 }
 div.HeroText div.Wrapper h1.SentenceContainer.TwoRow[active] span.Suffix.animate-delay {
   opacity: 1;
+  transform: translateX(0);
   transition-delay: 1s;
 }
 div.HeroText div.Wrapper h1.SentenceContainer.TwoRow[prev] span.Suffix.animate-delay {
@@ -169,4 +171,12 @@ div.HeroText div.Wrapper h1.SentenceContainer.TwoRow[prev] span.Suffix.animate-d
 div.HeroText div.Wrapper h1.SentenceContainer span.Suffix {
   font-family: serif;
   font-style: italic;
+}
+div.HeroText div.Wrapper h1.SentenceContainer span.Italic {
+  font-family: serif;
+  font-style: italic;
+}
+div.HeroText div.Wrapper h1.SentenceContainer span.Normal {
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
 }/*# sourceMappingURL=styles.css.map */

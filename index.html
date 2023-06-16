@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,6 +7,7 @@
     <title>Hero Text</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
+
 <body>
     <div class="HeroText">
         <div class="Wrapper" activeIndex="-1">
@@ -25,102 +27,104 @@
                 <span class="Prefix">Wir sind&nbsp;</span>
                 <span class="Suffix">erfahrene professionals</span>
             </h1>
-            <h1 class="SentenceContainer OneRow">
-                <span class="Prefix">Wir haben&nbsp;</span>
-                <span class="Suffix">viel Kaffee</span>
-            </h1>
             <h1 class="SentenceContainer TwoRow">
-                <span class="Prefix">Für unseren gemeinsamen Erfolg&nbsp;</span>
-                <span class="Suffix">Ökonomisch, ökologisch & sozial</span>
+                <span class="Prefix Italic">Damit nachhaltige und profitable Immobilieninvestmens entstehen&nbsp;</span>
+                <span class="Suffix"><span class="Normal">Für</span> Mensch – Umwelt – Gesellschaft</span>
             </h1>
         </div>
     </div>
 </body>
+
 </html>
 
 
 <script>
 
-(() => {
-    const allSentences = document.querySelectorAll("h1.SentenceContainer")
-    allSentences.forEach((sentence, index) => {
-        const maxIndex = allSentences.length - 1
-        const prefix = sentence.querySelector("span.Prefix")
-        const suffix = sentence.querySelector("span.Suffix")
+    (() => {
+        const allSentences = document.querySelectorAll("h1.SentenceContainer")
 
-        let nextIndex = index + 1
-        if (nextIndex > maxIndex) nextIndex = 0
+        if (!allSentences) return
 
-        if (prefix.innerHTML == allSentences[nextIndex].querySelector("span.Prefix").innerHTML && nextIndex <= maxIndex) {
-            suffix.classList.add("animate-out")
-            allSentences[nextIndex].querySelector("span.Suffix").classList.add("animate-in")
-        } else if (prefix.innerHTML != allSentences[nextIndex].querySelector("span.Prefix").innerHTML && nextIndex <= maxIndex) {
-            sentence.classList.add("animate-out")
-            allSentences[nextIndex].classList.add("animate-in")
+        allSentences.forEach((sentence, index) => {
+            const maxIndex = allSentences.length - 1
+            const prefix = sentence.querySelector("span.Prefix")
+            const suffix = sentence.querySelector("span.Suffix")
+
+            let nextIndex = index + 1
+            if (nextIndex > maxIndex) nextIndex = 0
+
+            if (prefix.innerHTML == allSentences[nextIndex].querySelector("span.Prefix").innerHTML && nextIndex <= maxIndex) {
+                suffix.classList.add("animate-out")
+                allSentences[nextIndex].querySelector("span.Suffix").classList.add("animate-in")
+            } else if (prefix.innerHTML != allSentences[nextIndex].querySelector("span.Prefix").innerHTML && nextIndex <= maxIndex) {
+                sentence.classList.add("animate-out")
+                allSentences[nextIndex].classList.add("animate-in")
+            }
+
+            if (sentence.classList.contains("TwoRow")) {
+                suffix.classList.add("animate-delay")
+            }
+        })
+    })()
+
+
+    const toggleActiveState = () => {
+        const wrapper = document.querySelector("div.Wrapper")
+        const allSentences = document.querySelectorAll("h1.SentenceContainer")
+
+        if (!wrapper || !allSentences) return
+
+        let timeout = 2000
+
+        allSentences.forEach((sentence) => {
+            sentence.removeAttribute("prev")
+            sentence.removeAttribute("active")
+            sentence.removeAttribute("next")
+        })
+
+        if (Number(wrapper.getAttribute("activeIndex")) == allSentences.length - 1) {
+            wrapper.setAttribute("activeIndex", 0)
+        } else {
+            wrapper.setAttribute("activeIndex", Number(wrapper.getAttribute("activeIndex")) + 1)
         }
 
-        if (sentence.classList.contains("TwoRow")) {
-            suffix.classList.add("animate-delay")
-        }
-    })
-})()
-
-
-const toggleActiveState = () => {
-    const wrapper = document.querySelector("div.Wrapper")
-    const allSentences = document.querySelectorAll("h1.SentenceContainer")
-
-    let timeout = 2000
-
-    allSentences.forEach((sentence) => {
-        sentence.removeAttribute("prev")
-        sentence.removeAttribute("active")
-        sentence.removeAttribute("next")
-    })
-
-    if (Number(wrapper.getAttribute("activeIndex")) == allSentences.length - 1) {
-        wrapper.setAttribute("activeIndex", 0)
-    } else {
-        wrapper.setAttribute("activeIndex", Number(wrapper.getAttribute("activeIndex")) + 1)
-    }
-
-    if (Number(wrapper.getAttribute("activeIndex")) == 1) {
-        allSentences[0].setAttribute("prev", "")
-        allSentences[0].classList.remove("followup-delay")
-    } else if (Number(wrapper.getAttribute("activeIndex")) == 0) {
-        timeout = 3000
-        allSentences[allSentences.length - 1].setAttribute("prev", "")
-        allSentences[allSentences.length - 1].classList.remove("followup-delay")
-    } else {
-        allSentences[Number(wrapper.getAttribute("activeIndex")) - 1].setAttribute("prev", "")
-        allSentences[Number(wrapper.getAttribute("activeIndex")) - 1].classList.remove("followup-delay")
-    }
-
-    if (Number(wrapper.getAttribute("activeIndex")) == allSentences.length) {
-        allSentences[0].setAttribute("active", "")
-    } else {
-        allSentences[Number(wrapper.getAttribute("activeIndex"))].setAttribute("active", "")
-    }
-    
-    if (Number(wrapper.getAttribute("activeIndex")) == allSentences.length - 1) {
-        allSentences[0].setAttribute("next", "")
-        if (document.querySelector("h1.SentenceContainer[active]").classList.contains("TwoRow")) {
-            allSentences[0].classList.add("followup-delay")
+        if (Number(wrapper.getAttribute("activeIndex")) == 1) {
+            allSentences[0].setAttribute("prev", "")
+            allSentences[0].classList.remove("followup-delay")
+        } else if (Number(wrapper.getAttribute("activeIndex")) == 0) {
             timeout = 3000
+            allSentences[allSentences.length - 1].setAttribute("prev", "")
+            allSentences[allSentences.length - 1].classList.remove("followup-delay")
+        } else {
+            allSentences[Number(wrapper.getAttribute("activeIndex")) - 1].setAttribute("prev", "")
+            allSentences[Number(wrapper.getAttribute("activeIndex")) - 1].classList.remove("followup-delay")
         }
-    } else {
-        const foundItem = allSentences[Number(wrapper.getAttribute("activeIndex")) + 1]
-        foundItem.setAttribute("next", "")
-        if (document.querySelector("h1.SentenceContainer[active]").classList.contains("TwoRow")) {
-            foundItem.classList.add("followup-delay")
-            timeout = 3000
-        } 
+
+        if (Number(wrapper.getAttribute("activeIndex")) == allSentences.length) {
+            allSentences[0].setAttribute("active", "")
+        } else {
+            allSentences[Number(wrapper.getAttribute("activeIndex"))].setAttribute("active", "")
+        }
+
+        if (Number(wrapper.getAttribute("activeIndex")) == allSentences.length - 1) {
+            allSentences[0].setAttribute("next", "")
+            if (document.querySelector("h1.SentenceContainer[active]").classList.contains("TwoRow")) {
+                allSentences[0].classList.add("followup-delay")
+                timeout = 5000
+            }
+        } else {
+            const foundItem = allSentences[Number(wrapper.getAttribute("activeIndex")) + 1]
+            foundItem.setAttribute("next", "")
+            if (document.querySelector("h1.SentenceContainer[active]").classList.contains("TwoRow")) {
+                foundItem.classList.add("followup-delay")
+                timeout = 5000
+            }
+        }
+
+        setTimeout(() => toggleActiveState(), timeout)
     }
 
-    setTimeout(() => toggleActiveState(), timeout)
-}
+    toggleActiveState()
 
-toggleActiveState()
-
-console.log("%cCarefully developed by Benjamin Hutter Studio (www.benjaminhutter.de)", "color: black; font-family: sans-serif; background-color: #ACACAC; font-size: 16px; padding: 16px 24px; width: 100%; border-radius: 8px;")
+    console.log("%cCarefully developed by Benjamin Hutter Studio (www.benjaminhutter.de)", "color: black; font-family: sans-serif; background-color: #ACACAC; font-size: 16px; padding: 16px 24px; width: 100%; border-radius: 8px;")
 </script>
