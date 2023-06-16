@@ -135,7 +135,7 @@ div.HeroText {
                 &.animate-out[prev] {
                     transform: translateY(28px) perspective(500px) rotateX(-60deg) scale(0.97);
                     transition: 1s cubic-bezier(0.83, 0, 0.17, 1);
-                    transition-delay: 1s;
+                    transition-delay: 0.1s;
                 }
 
 
