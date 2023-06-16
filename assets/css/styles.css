@@ -166,6 +166,7 @@ div.HeroText div.Wrapper h1.SentenceContainer.TwoRow[active] span.Suffix.animate
 }
 div.HeroText div.Wrapper h1.SentenceContainer.TwoRow[prev] span.Suffix.animate-delay {
   opacity: 0;
+  transform: translateY(28px) perspective(500px) rotateX(-60deg) scale(0.97);
   transition: 1s cubic-bezier(0.83, 0, 0.17, 1);
 }
 div.HeroText div.Wrapper h1.SentenceContainer span.Suffix {
