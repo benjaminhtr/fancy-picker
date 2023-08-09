@@ -27,9 +27,8 @@
                 <span class="Prefix">Wir sind&nbsp;</span>
                 <span class="Suffix">erfahrene professionals</span>
             </h1>
-            <h1 class="SentenceContainer TwoRow">
+            <h1 class="SentenceContainer OneRow LastRow">
                 <span class="Prefix Italic">Damit nachhaltige und profitable Immobilieninvestmens entstehen&nbsp;</span>
-                <span class="Suffix"><span class="Normal">Für</span> Mensch – Umwelt – Gesellschaft</span>
             </h1>
         </div>
     </div>
@@ -92,7 +91,7 @@
             allSentences[0].setAttribute("prev", "")
             allSentences[0].classList.remove("followup-delay")
         } else if (Number(wrapper.getAttribute("activeIndex")) == 0) {
-            timeout = 3000
+            timeout = 2000 // change to 3000 for 2. alternative
             allSentences[allSentences.length - 1].setAttribute("prev", "")
             allSentences[allSentences.length - 1].classList.remove("followup-delay")
         } else {
@@ -108,18 +107,20 @@
 
         if (Number(wrapper.getAttribute("activeIndex")) == allSentences.length - 1) {
             allSentences[0].setAttribute("next", "")
-            if (document.querySelector("h1.SentenceContainer[active]").classList.contains("TwoRow")) {
-                allSentences[0].classList.add("followup-delay")
-                timeout = 5000
+            if (document.querySelector("h1.SentenceContainer[active]").classList.contains("LastRow")) {
+                // allSentences[0].classList.add("followup-delay") // uncomment for 2. alternative
+                timeout = 10000
             }
         } else {
             const foundItem = allSentences[Number(wrapper.getAttribute("activeIndex")) + 1]
             foundItem.setAttribute("next", "")
-            if (document.querySelector("h1.SentenceContainer[active]").classList.contains("TwoRow")) {
-                foundItem.classList.add("followup-delay")
-                timeout = 5000
+            if (document.querySelector("h1.SentenceContainer[active]").classList.contains("LastRow")) {
+                // foundItem.classList.add("followup-delay") // uncomment for 2. alternative
+                timeout = 10000
             }
         }
+
+
 
         setTimeout(() => toggleActiveState(), timeout)
     }
